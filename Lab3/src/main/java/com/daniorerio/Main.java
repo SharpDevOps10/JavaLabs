@@ -1,7 +1,10 @@
 package com.daniorerio;
 
+import com.daniorerio.controller.ShapeController;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        ShapeController controller = new ShapeController(10);
+        controller.startInteraction();
     }
 }

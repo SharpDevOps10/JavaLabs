@@ -20,11 +20,6 @@ public class Triangle extends Shape {
 
     @Override
     public String toString() {
-        return super.toString() + ", Triangle: sideA = " + sideA + ", sideB = " + sideB + ", sideC = " + sideC + ", area = " + calcArea();
-    }
-
-    @Override
-    public void draw() {
-        System.out.println("Drawing Triangle");
+        return "Triangle\t| color: " + shapeColor + ", sideA = " + sideA + ", sideB = " + sideB + ", sideC = " + sideC + ", area = " + calcArea();
     }
 }

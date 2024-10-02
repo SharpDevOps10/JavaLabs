@@ -17,11 +17,6 @@ public class Rectangle extends Shape {
 
     @Override
     public String toString() {
-        return super.toString() + ", Rectangle: width = " + width + ", height = " + height + ", area = " + calcArea();
-    }
-
-    @Override
-    public void draw() {
-        System.out.println("Drawing rectangle");
+        return "Rectangle\t| color: " + shapeColor + ", height: " + height + ", width: " + width + ", area: " + calcArea();
     }
 }

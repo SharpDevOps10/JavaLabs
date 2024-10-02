@@ -15,11 +15,6 @@ public class Circle extends Shape {
 
     @Override
     public String toString() {
-        return super.toString() + ", Circle: radius = " + radius + ", area = " + calcArea();
-    }
-
-    @Override
-    public void draw() {
-        System.out.println("Drawing Circle");
+        return "Circle\t\t| color: " + shapeColor + ", radius: " + radius + ", area: " + calcArea();
     }
 }
