@@ -49,7 +49,7 @@ public class ShapeModel {
         }
     }
 
-    private boolean isValidTriangle(double sideA, double sideB, double sideC) {
+    public boolean isValidTriangle(double sideA, double sideB, double sideC) {
         return (sideA + sideB > sideC) && (sideA + sideC > sideB) && (sideB + sideC > sideA);
     }
 
