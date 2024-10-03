@@ -21,11 +21,11 @@ public class ShapeController {
 
     public void startInteraction() {
         if (userInputHandler.askToDisplayShapes()) {
-            view.displayMessage("Displaying all shapes:");
+            view.displayMessage(view.DISPLAYING_SHAPES);
             displayShapes();
             displayTotalArea();
         } else {
-            view.displayMessage("Exiting program.");
+            view.displayMessage(view.EXIT_PROGRAM);
             return;
         }
 
@@ -38,7 +38,7 @@ public class ShapeController {
             if (shapeType != null) {
                 displayTotalAreaByType(shapeType, shapeTypeInput);
             } else {
-                view.displayMessage("Invalid shape type. Exiting program.");
+                view.displayMessage(view.INVALID_SHAPE);
                 return;
             }
         }
