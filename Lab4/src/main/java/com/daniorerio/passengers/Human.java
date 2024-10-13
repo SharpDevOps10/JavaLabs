@@ -4,7 +4,7 @@ import com.daniorerio.vehicles.Vehicle;
 
 public class Human {
     private final String name;
-    private Vehicle passengerVehicle = null;
+    private Vehicle<? extends Human> passengerVehicle = null;
 
     public Human(String name) {
         this.name = name;
@@ -14,11 +14,11 @@ public class Human {
         return name;
     }
 
-    public Vehicle getPassengerVehicle() {
+    public Vehicle<? extends Human> getPassengerVehicle() {
         return passengerVehicle;
     }
 
-    public void setPassengerVehicle(Vehicle passengerVehicle) {
+    public void setPassengerVehicle(Vehicle<? extends Human> passengerVehicle) {
         this.passengerVehicle = passengerVehicle;
     }
 }
