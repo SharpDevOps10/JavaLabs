@@ -2,7 +2,9 @@ package com.daniorerio.shapes;
 
 import com.daniorerio.drawable.Drawable;
 
-public abstract class Shape implements Drawable {
+import java.io.Serializable;
+
+public abstract class Shape implements Drawable, Serializable {
     public String shapeColor;
 
     public Shape(String shapeColor) {

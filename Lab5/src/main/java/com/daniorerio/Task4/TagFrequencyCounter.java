@@ -52,7 +52,7 @@ public class TagFrequencyCounter {
 
     private static Map<String, Integer> countTags(String htmlContent) {
         Map<String, Integer> tagFrequencyMap = new HashMap<>();
-        Pattern pattern = Pattern.compile("<\\s*(\\w+)([^>]*?)\\s*>");
+        Pattern pattern = Pattern.compile("<(\\w+)(\\s|>)");
         Matcher matcher = pattern.matcher(htmlContent);
 
         while (matcher.find()) {

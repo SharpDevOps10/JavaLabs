@@ -5,7 +5,8 @@ import com.daniorerio.shapes.Shape;
 public class ShapeView {
     public final String DISPLAYING_SHAPES = "Displaying all shapes:";
     public final String EXIT_PROGRAM = "Exiting program.";
-    public final String INVALID_SHAPE = "Invalid shape type. Exiting program.";
+    public final String INVALID_COMMAND = "Invalid command: ";
+    public final String AVAILABLE_COMMANDS = "Available commands: display, load, save, sort area, sort color, total area, exit";
 
     public void displayShapes(Shape[] shapes) {
         for (Shape shape : shapes) {

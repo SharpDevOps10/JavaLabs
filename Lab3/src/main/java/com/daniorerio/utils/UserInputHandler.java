@@ -9,24 +9,14 @@ public class UserInputHandler {
         this.scanner = new Scanner(System.in);
     }
 
-    public boolean askToDisplayShapes() {
-        System.out.print("Do you want to display all shapes? (y/n): ");
-        return scanner.nextLine().equalsIgnoreCase("y");
+    public String askForCommand() {
+        System.out.print("Enter the command: ");
+        return scanner.nextLine().trim();
     }
 
-    public String askForShapeType() {
-        System.out.print("For which figure do you need to calculate the total area (Triangle, Circle, Rectangle, All)? ");
-        return scanner.nextLine().toLowerCase();
-    }
-
-    public boolean askToSortByArea() {
-        System.out.print("Should I sort by area? (y/n): ");
-        return scanner.nextLine().equalsIgnoreCase("y");
-    }
-
-    public boolean askToSortByColor() {
-        System.out.print("Should I sort by color? (y/n): ");
-        return scanner.nextLine().equalsIgnoreCase("y");
+    public String askForFileName(String action) {
+        System.out.print("Please enter the filename to " + action + ": ");
+        return scanner.nextLine();
     }
 
     public void close() {
