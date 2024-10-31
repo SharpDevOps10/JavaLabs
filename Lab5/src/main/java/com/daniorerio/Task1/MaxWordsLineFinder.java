@@ -7,18 +7,19 @@ import java.io.IOException;
 
 public class MaxWordsLineFinder {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введіть назву файлу: ");
-        String filePath = scanner.nextLine();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Введіть назву файлу: ");
+            String filePath = scanner.nextLine();
 
-        try {
-            String lineWithMaxWords = getLineWithMaxWords(filePath);
-            int wordCount = countWords(lineWithMaxWords);
-            System.out.println("Рядок з максимальною кількістю слів: ");
-            System.out.println(lineWithMaxWords);
-            System.out.println("Кількість слів у рядку: " + wordCount);
-        } catch (IOException e) {
-            System.out.println("Помилка при читанні файлу: " + e.getMessage());
+            try {
+                String lineWithMaxWords = getLineWithMaxWords(filePath);
+                int wordCount = countWords(lineWithMaxWords);
+                System.out.println("Рядок з максимальною кількістю слів: ");
+                System.out.println(lineWithMaxWords);
+                System.out.println("Кількість слів у рядку: " + wordCount);
+            } catch (IOException e) {
+                System.out.println("Помилка при читанні файлу: " + e.getMessage());
+            }
         }
     }
 
