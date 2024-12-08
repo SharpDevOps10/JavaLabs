@@ -3,10 +3,10 @@ package com.daniorerio.task2;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Producer implements Runnable {
-    private final CircularBuffer<String> buffer;
+    private final CircularBuffer buffer;
     private final int id;
 
-    public Producer(CircularBuffer<String> buffer, int id) {
+    public Producer(CircularBuffer buffer, int id) {
         this.buffer = buffer;
         this.id = id;
     }

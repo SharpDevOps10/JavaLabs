@@ -5,39 +5,67 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class CircularBuffer<T> {
-    private final LinkedList<T> buffer = new LinkedList<>();
+public class CircularBuffer {
+    private final LinkedList<String> buffer;
     private final int capacity;
-    private final Lock lock = new ReentrantLock();
-    private final Condition notFull = lock.newCondition();
-    private final Condition notEmpty = lock.newCondition();
+    private int readIndex;
+    private int writeIndex;
+
+    private final Lock lock;
+    private final Condition notFull;
+    private final Condition notEmpty;
 
     public CircularBuffer(int capacity) {
+        this.buffer = new LinkedList<>();
         this.capacity = capacity;
+        this.readIndex = 0;
+        this.writeIndex = 0;
+        this.lock = new ReentrantLock();
+        this.notFull = lock.newCondition();
+        this.notEmpty = lock.newCondition();
     }
 
-    public void add(T item) throws InterruptedException {
+    public boolean isEmpty() {
+        return readIndex == writeIndex;
+    }
+
+    public boolean isFull() {
+        return (writeIndex + 1) % capacity == readIndex;
+    }
+
+    public void add(String value) throws InterruptedException {
         lock.lock();
         try {
-            while (buffer.size() == capacity) {
+            while (isFull()) {
                 notFull.await();
             }
-            buffer.add(item);
+
+            if (writeIndex == buffer.size()) {
+                buffer.add(value);
+            } else {
+                buffer.set(writeIndex, value);
+            }
+
+            writeIndex = (writeIndex + 1) % capacity;
             notEmpty.signal();
         } finally {
             lock.unlock();
         }
     }
 
-    public T remove() throws InterruptedException {
+    public String read() throws InterruptedException {
         lock.lock();
         try {
-            while (buffer.isEmpty()) {
+            while (isEmpty()) {
                 notEmpty.await();
             }
-            T item = buffer.removeFirst();
+
+            String result = buffer.get(readIndex);
+
+            readIndex = (readIndex + 1) % capacity;
             notFull.signal();
-            return item;
+
+            return result;
         } finally {
             lock.unlock();
         }
